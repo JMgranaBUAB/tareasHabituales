@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas Habituales - Administración</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Administración de Tareas Habituales</h1>
+        <a href="index.html" class="admin-link">Ir a Vista Usuario</a>
+        
+        <div class="task-section">
+            <h2>Tareas de la Mañana</h2>
+            <form id="morning-form" class="task-form">
+                <input type="text" id="morning-task" placeholder="Nueva tarea de mañana">
+                <button type="submit">Agregar</button>
+            </form>
+            <div id="morning-tasks" class="task-list"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>Tareas de la Noche</h2>
+            <form id="night-form" class="task-form">
+                <input type="text" id="night-task" placeholder="Nueva tarea de noche">
+                <button type="submit">Agregar</button>
+            </form>
+            <div id="night-tasks" class="task-list"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Configuración específica para vista de administrador
+        window.isAdminView = true;
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tareas Habituales - Vista Usuario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Mis Tareas Habituales</h1>
+        <a href="admin.html" class="admin-link">Ir a Administración</a>
+        
+        <div class="task-section">
+            <h2>Tareas de la Mañana</h2>
+            <div id="morning-tasks" class="task-list"></div>
+        </div>
+
+        <div class="task-section">
+            <h2>Tareas de la Noche</h2>
+            <div id="night-tasks" class="task-list"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Configuración específica para vista de usuario
+        window.isAdminView = false;
+    </script>
+</body>
+</html>

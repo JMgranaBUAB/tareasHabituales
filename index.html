@@ -3,28 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tareas Habituales - Vista Usuario</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Tareas Diarias</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Mis Tareas Habituales</h1>
-        <a href="admin.html" class="admin-link">Ir a Administración</a>
+        <h1>Mis Tareas Diarias</h1>
         
-        <div class="task-section">
-            <h2>Tareas de la Mañana</h2>
-            <div id="morning-tasks" class="task-list"></div>
-        </div>
+        <div class="tasks-container">
+            <!-- Tareas de Mañana -->
+            <section class="task-section">
+                <h2>Tareas de Mañana</h2>
+                <form class="task-form" id="morning-form">
+                    <input 
+                        type="text" 
+                        placeholder="Nueva tarea de mañana..."
+                        required
+                    >
+                    <button type="submit">Añadir</button>
+                </form>
+                <div class="task-list" id="morning-tasks"></div>
+            </section>
 
-        <div class="task-section">
-            <h2>Tareas de la Noche</h2>
-            <div id="night-tasks" class="task-list"></div>
+            <!-- Tareas de Noche -->
+            <section class="task-section">
+                <h2>Tareas de Noche</h2>
+                <form class="task-form" id="night-form">
+                    <input 
+                        type="text" 
+                        placeholder="Nueva tarea de noche..."
+                        required
+                    >
+                    <button type="submit">Añadir</button>
+                </form>
+                <div class="task-list" id="night-tasks"></div>
+            </section>
         </div>
     </div>
-    <script src="script.js"></script>
-    <script>
-        // Configuración específica para vista de usuario
-        window.isAdminView = false;
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>

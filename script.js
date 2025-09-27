@@ -10,13 +10,52 @@ class Task {
 class TaskManager {
     constructor(type) {
         this.type = type; // 'morning' o 'night'
+        this.isStorageAvailable = this.checkStorageAvailability();
         this.tasks = this.loadTasks();
         this.checkAndResetDaily();
+        
+        if (!this.isStorageAvailable) {
+            this.showStorageWarning();
+        }
+    }
+
+    checkStorageAvailability() {
+        try {
+            const test = '__storage_test__';
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    showStorageWarning() {
+        const warning = document.createElement('div');
+        warning.className = 'storage-warning';
+        warning.innerHTML = `
+            <p>⚠️ Advertencia: El almacenamiento local no está disponible.</p>
+            <p>Si estás usando Safari en iOS:</p>
+            <ol>
+                <li>Ve a Ajustes > Safari</li>
+                <li>Desactiva "Prevenir el seguimiento entre sitios web"</li>
+                <li>Desactiva "Bloquear todas las cookies"</li>
+                <li>Asegúrate de no estar en modo privado</li>
+            </ol>
+            <p>Las tareas no se guardarán entre sesiones.</p>
+        `;
+        document.querySelector('.container').insertBefore(warning, document.querySelector('.task-section'));
     }
 
     loadTasks() {
-        const tasks = localStorage.getItem(`tasks_${this.type}`);
-        return tasks ? JSON.parse(tasks) : [];
+        if (!this.isStorageAvailable) return [];
+        try {
+            const tasks = localStorage.getItem(`tasks_${this.type}`);
+            return tasks ? JSON.parse(tasks) : [];
+        } catch (e) {
+            console.error('Error loading tasks:', e);
+            return [];
+        }
     }
 
     checkAndResetDaily() {
@@ -35,7 +74,12 @@ class TaskManager {
     }
 
     saveTasks() {
-        localStorage.setItem(`tasks_${this.type}`, JSON.stringify(this.tasks));
+        if (!this.isStorageAvailable) return;
+        try {
+            localStorage.setItem(`tasks_${this.type}`, JSON.stringify(this.tasks));
+        } catch (e) {
+            console.error('Error saving tasks:', e);
+        }
     }
 
     addTask(text) {

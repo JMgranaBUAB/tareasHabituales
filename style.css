@@ -43,6 +43,28 @@ body {
     opacity: 0.8;
 }
 
+.storage-warning {
+    background-color: rgba(255, 193, 7, 0.2);
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.storage-warning p {
+    margin-bottom: 0.5rem;
+}
+
+.storage-warning ol {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.storage-warning li {
+    margin-bottom: 0.25rem;
+}
+
 h1 {
     text-align: center;
     color: var(--text-color);
